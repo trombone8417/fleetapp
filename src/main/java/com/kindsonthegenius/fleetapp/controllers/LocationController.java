@@ -1,10 +1,12 @@
 package com.kindsonthegenius.fleetapp.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@RequestMapping("/locations")
 public class LocationController {
-
+	@GetMapping("/locations")
+	public String getLocation(){
+		return "Location";
+	}
 }

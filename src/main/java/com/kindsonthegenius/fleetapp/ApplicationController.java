@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ApplicationController {
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String goHome(){
 		return "index";
 	}
