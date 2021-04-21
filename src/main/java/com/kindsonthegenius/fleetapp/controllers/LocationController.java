@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LocationController {
-	@GetMapping("/locations")
+	@GetMapping("/Locations")
 	public String getLocation(){
 		return "Location";
 	}

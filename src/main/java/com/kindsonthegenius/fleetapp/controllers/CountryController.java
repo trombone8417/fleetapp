@@ -1,12 +1,24 @@
 package com.kindsonthegenius.fleetapp.controllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.kindsonthegenius.fleetapp.models.Country;
+import com.kindsonthegenius.fleetapp.services.CountryService;
 
 @Controller
 public class CountryController {
-	@GetMapping("/countries")
-	public String getCountry(){
+	@Autowired
+	private CountryService countryService;
+	
+	@GetMapping("/Countries")
+	public String getCountries(Model model){
+		List<Country> countryList = countryService.getCountries();
+		model.addAttribute("countries",countryList);
 		return "Country";
 	}
 }
