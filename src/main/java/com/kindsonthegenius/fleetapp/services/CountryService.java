@@ -14,10 +14,18 @@ public class CountryService {
 	@Autowired
 	private CountryRepository countryRepository;
 
+/**
+ * 列出所有國家
+ * @return
+ */
 	public List<Country> getCountries() {
 		return countryRepository.findAll();
 	}
 
+/**
+ * 新增
+ * @param country
+ */
 	public void save(Country country) {
 		countryRepository.save(country);
 	}

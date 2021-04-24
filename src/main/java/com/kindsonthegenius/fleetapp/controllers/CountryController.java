@@ -16,12 +16,23 @@ public class CountryController {
 	@Autowired
 	private CountryService countryService;
 	
+	/**
+	 * 主頁
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/Countries")
 	public String getCountries(Model model){
 		List<Country> countryList = countryService.getCountries();
 		model.addAttribute("countries",countryList);
 		return "Country";
 	}
+	
+	/**
+	 * 新增
+	 * @param country
+	 * @return
+	 */
 	@PostMapping("/Countries/addNew")
 	public String addNew(Country country) {
 		countryService.save(country);
