@@ -1,6 +1,7 @@
 package com.kindsonthegenius.fleetapp.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,14 @@ public class CountryService {
 	}
 
 /**
- * 新增
+ * 新增or更新
  * @param country
  */
 	public void save(Country country) {
 		countryRepository.save(country);
+	}
+	
+	public Optional<Country> findById(int id) {
+		return countryRepository.findById(id);
 	}
 }
