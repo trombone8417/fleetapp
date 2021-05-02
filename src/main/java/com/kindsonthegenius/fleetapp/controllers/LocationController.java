@@ -12,11 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kindsonthegenius.fleetapp.models.Country;
 import com.kindsonthegenius.fleetapp.models.Location;
+import com.kindsonthegenius.fleetapp.models.State;
+import com.kindsonthegenius.fleetapp.services.CountryService;
 import com.kindsonthegenius.fleetapp.services.LocationService;
+import com.kindsonthegenius.fleetapp.services.StateService;
 
 @Controller
 public class LocationController {
+	@Autowired
+	private StateService stateService;
+	@Autowired
+	private CountryService countryService;
 	@Autowired
 	private LocationService locationService;
 	
@@ -27,7 +35,11 @@ public class LocationController {
 	 */
 	@GetMapping("/Locations")
 	public String getLocations(Model model){
+		List<State> stateList = stateService.getStates();
+		List<Country> countryList = countryService.getCountries();
 		List<Location> locationList = locationService.getLocations();
+		model.addAttribute("states",stateList);
+		model.addAttribute("countries",countryList);
 		model.addAttribute("locations",locationList);
 		return "Location";
 	}
