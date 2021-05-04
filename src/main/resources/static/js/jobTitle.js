@@ -4,14 +4,13 @@
 
 $('document').ready(function() {
 	
-	$('.table #editButton').on('click',function(event){	
-		
+	$('table #editButton').on('click',function(event){
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(employeeType, status){
-			$('#idEdit').val(employeeType.id);
-			$('#descriptionEdit').val(employeeType.description);
-			$('#detailsEdit').val(employeeType.details);
+		$.get(href, function(jobTitle, status){
+			$('#idEdit').val(jobTitle.id);
+			$('#descriptionEdit').val(jobTitle.description);
+			$('#detailsEdit').val(jobTitle.details);
 		});			
 		$('#editModal').modal();		
 	});
@@ -19,16 +18,16 @@ $('document').ready(function() {
 	$('.table #detailsButton').on('click',function(event) {
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(employeeType, status){
-			$('#idDetails').val(employeeType.id);
-			$('#descriptionDetails').val(employeeType.description);
-			$('#detailsDetails').val(employeeType.details);
-			
+		$.get(href, function(jobTitle, status){
+			$('#idDetails').val(jobTitle.id);
+			$('#descriptionDetails').val(jobTitle.description);
+			$('#detailsDetails').val(jobTitle.details);
 		});			
 		$('#detailsModal').modal();		
 	});	
 	
 	$('.table #deleteButton').on('click',function(event) {
+		
 		event.preventDefault();
 		var href = $(this).attr('href');
 		$('#deleteModal #delRef').attr('href', href);
