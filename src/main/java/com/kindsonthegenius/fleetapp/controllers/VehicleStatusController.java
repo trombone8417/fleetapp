@@ -25,10 +25,10 @@ public class VehicleStatusController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/vehicleStatuses")
+	@GetMapping("/VehicleStatuses")
 	public String getvehicleStatuses(Model model){
 		List<VehicleStatus> vehicleStatusList = vehicleStatusService.getvehicleStatuses();
-		model.addAttribute("vehicleStatuss",vehicleStatusList);
+		model.addAttribute("vehicleStatuses",vehicleStatusList);
 		return "VehicleStatus";
 	}
 	
@@ -37,17 +37,17 @@ public class VehicleStatusController {
 	 * @param vehicleStatus
 	 * @return
 	 */
-	@PostMapping("/vehicleStatuses/addNew")
+	@PostMapping("/VehicleStatuses/addNew")
 	public String addNew(VehicleStatus vehicleStatus) {
 		vehicleStatusService.save(vehicleStatus);
-		return "redirect:/vehicleStatuses";
+		return "redirect:/VehicleStatuses";
 	}
 	/**
 	 * 帶出編輯資料
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("vehicleStatuses/findById")
+	@RequestMapping("VehicleStatuses/findById")
 	@ResponseBody
 	public Optional<VehicleStatus>findById(int id){
 		return vehicleStatusService.findById(id);
@@ -57,15 +57,15 @@ public class VehicleStatusController {
 	 * @param vehicleStatus
 	 * @return
 	 */
-	@RequestMapping(value="vehicleStatuses/update", method = {RequestMethod.PUT,RequestMethod.GET})
+	@RequestMapping(value="VehicleStatuses/update", method = {RequestMethod.PUT,RequestMethod.GET})
 	public String update(VehicleStatus vehicleStatus) {
 		vehicleStatusService.save(vehicleStatus);
-		return "redirect:/vehicleStatuses";
+		return "redirect:/VehicleStatuses";
 	}
 	
-	@RequestMapping(value="vehicleStatuses/delete", method = {RequestMethod.DELETE,RequestMethod.GET})
+	@RequestMapping(value="VehicleStatuses/delete", method = {RequestMethod.DELETE,RequestMethod.GET})
 	public String delete(Integer id) {
 		vehicleStatusService.delete(id);
-		return "redirect:/vehicleStatuses";
+		return "redirect:/VehicleStatuses";
 	}
 }
