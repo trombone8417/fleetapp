@@ -35,9 +35,9 @@ public class ClientController {
 	public String getClients(Model model){
 		model.addAttribute("clients",clientService.getClients());
 
-		model.addAttribute("countries",clientService.getClients());
+		model.addAttribute("countries",countryService.getCountries());
 
-		model.addAttribute("states",clientService.getClients());
+		model.addAttribute("states",stateService.getStates());
 		return "Client";
 	}
 	
