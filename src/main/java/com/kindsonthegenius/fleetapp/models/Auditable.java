@@ -2,6 +2,7 @@ package com.kindsonthegenius.fleetapp.models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -17,12 +18,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable<U> {
-
     @CreatedBy
+    @Column(name = "created_by", updatable = false)
     protected U createdBy;
-
     @CreatedDate
     @Temporal(TIMESTAMP)
+    @Column(name = "created_date", updatable = false)
     protected Date createdDate;
 
     @LastModifiedBy
