@@ -28,6 +28,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/css/**", 
 				"/fonts/**", 
 				"/img/**").permitAll()
+		.antMatchers("/register", 
+				"/resources/**", 
+				"/css/**", 
+				"/fonts/**", 
+				"/img/**", 
+				"/js/**").permitAll()
+		.antMatchers("/users/addNew").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
