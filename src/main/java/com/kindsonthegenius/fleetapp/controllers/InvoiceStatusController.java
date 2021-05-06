@@ -25,10 +25,11 @@ public class InvoiceStatusController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/invoiceStatuses")
+	@GetMapping("/InvoiceStatuses")
 	public String getinvoiceStatuses(Model model){
 		List<InvoiceStatus> invoiceStatusList = invoiceStatusService.getInvoiceStatuses();
-		model.addAttribute("invoiceStatuss",invoiceStatusList);
+		model.addAttribute("invoiceStatuses",invoiceStatusList);
+//		Vi名稱名稱
 		return "InvoiceStatus";
 	}
 	
@@ -37,17 +38,18 @@ public class InvoiceStatusController {
 	 * @param invoiceStatus
 	 * @return
 	 */
-	@PostMapping("/invoiceStatuses/addNew")
+	@PostMapping("/InvoiceStatuses/addNew")
 	public String addNew(InvoiceStatus invoiceStatus) {
 		invoiceStatusService.save(invoiceStatus);
-		return "redirect:/invoiceStatuses";
+//導回URLRL
+		return "redirect:/InvoiceStatuses";
 	}
 	/**
 	 * 帶出編輯資料
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("invoiceStatuses/findById")
+	@RequestMapping("InvoiceStatuses/findById")
 	@ResponseBody
 	public Optional<InvoiceStatus>findById(int id){
 		return invoiceStatusService.findById(id);
@@ -57,15 +59,15 @@ public class InvoiceStatusController {
 	 * @param invoiceStatus
 	 * @return
 	 */
-	@RequestMapping(value="invoiceStatuses/update", method = {RequestMethod.PUT,RequestMethod.GET})
+	@RequestMapping(value="InvoiceStatuses/update", method = {RequestMethod.PUT,RequestMethod.GET})
 	public String update(InvoiceStatus invoiceStatus) {
 		invoiceStatusService.save(invoiceStatus);
-		return "redirect:/invoiceStatuses";
+		return "redirect:/InvoiceStatuses";
 	}
 	
-	@RequestMapping(value="invoiceStatuses/delete", method = {RequestMethod.DELETE,RequestMethod.GET})
+	@RequestMapping(value="InvoiceStatuses/delete", method = {RequestMethod.DELETE,RequestMethod.GET})
 	public String delete(Integer id) {
 		invoiceStatusService.delete(id);
-		return "redirect:/invoiceStatuses";
+		return "redirect:/InvoiceStatuses";
 	}
 }

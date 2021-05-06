@@ -16,7 +16,7 @@ public class InvoiceStatusService {
 	private InvoiceStatusRepository invoiceStatusRepository;
 
 /**
- * 列出所有國家
+ * 列出所有
  * @return
  */
 	public List<InvoiceStatus> getInvoiceStatuses() {
