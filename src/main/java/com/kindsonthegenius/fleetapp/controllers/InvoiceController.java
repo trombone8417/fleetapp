@@ -1,6 +1,5 @@
 package com.kindsonthegenius.fleetapp.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kindsonthegenius.fleetapp.models.Invoice;
+import com.kindsonthegenius.fleetapp.services.ClientService;
 import com.kindsonthegenius.fleetapp.services.InvoiceService;
+import com.kindsonthegenius.fleetapp.services.InvoiceStatusService;
 
 @Controller
 public class InvoiceController {
 	@Autowired
 	private InvoiceService invoiceService;
-	
+	@Autowired
+	private ClientService clientService;
+	@Autowired
+	private InvoiceStatusService invoiceStatusService;
 	/**
 	 * 主頁
 	 * @param model
@@ -27,8 +31,9 @@ public class InvoiceController {
 	 */
 	@GetMapping("/Invoices")
 	public String getInvoices(Model model){
-		List<Invoice> invoiceList = invoiceService.getInvoices();
-		model.addAttribute("invoices",invoiceList);
+		model.addAttribute("invoices",invoiceService.getInvoices());
+		model.addAttribute("clients",clientService.getClients());
+		model.addAttribute("invoiceStatuses",invoiceStatusService.getInvoiceStatuses());
 		return "Invoice";
 	}
 	
