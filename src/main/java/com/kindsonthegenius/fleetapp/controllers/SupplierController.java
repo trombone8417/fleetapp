@@ -1,6 +1,5 @@
 package com.kindsonthegenius.fleetapp.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kindsonthegenius.fleetapp.models.Supplier;
+import com.kindsonthegenius.fleetapp.services.CountryService;
+import com.kindsonthegenius.fleetapp.services.StateService;
 import com.kindsonthegenius.fleetapp.services.SupplierService;
 
 @Controller
 public class SupplierController {
+	@Autowired
+	private StateService stateService;
+	@Autowired
+	private CountryService countryService;
 	@Autowired
 	private SupplierService supplierService;
 	
@@ -27,8 +32,11 @@ public class SupplierController {
 	 */
 	@GetMapping("/Suppliers")
 	public String getSuppliers(Model model){
-		List<Supplier> supplierList = supplierService.getSuppliers();
-		model.addAttribute("suppliers",supplierList);
+		model.addAttribute("suppliers",supplierService.getSuppliers());
+
+		model.addAttribute("countries",countryService.getCountries());
+
+		model.addAttribute("states",stateService.getStates());
 		return "Supplier";
 	}
 	
