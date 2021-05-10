@@ -14,11 +14,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kindsonthegenius.fleetapp.models.Contact;
 import com.kindsonthegenius.fleetapp.services.ContactService;
+import com.kindsonthegenius.fleetapp.services.CountryService;
+import com.kindsonthegenius.fleetapp.services.StateService;
 
 @Controller
 public class ContactController {
 	@Autowired
 	private ContactService contactService;
+	@Autowired 
+	private StateService stateService;
+	@Autowired 
+	private CountryService countryService;	
 	
 	/**
 	 * 主頁
@@ -27,8 +33,9 @@ public class ContactController {
 	 */
 	@GetMapping("/Contacts")
 	public String getContacts(Model model){
-		List<Contact> contactList = contactService.getContacts();
-		model.addAttribute("contacts",contactList);
+		model.addAttribute("countries", countryService.getCountries());
+		model.addAttribute("states", stateService.getStates());
+		model.addAttribute("contacts", contactService.getContacts());
 		return "Contact";
 	}
 	
