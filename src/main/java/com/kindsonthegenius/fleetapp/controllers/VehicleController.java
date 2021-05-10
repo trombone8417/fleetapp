@@ -13,12 +13,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kindsonthegenius.fleetapp.models.Vehicle;
+import com.kindsonthegenius.fleetapp.services.EmployeeService;
+import com.kindsonthegenius.fleetapp.services.LocationService;
+import com.kindsonthegenius.fleetapp.services.VehicleMakeService;
+import com.kindsonthegenius.fleetapp.services.VehicleModelService;
 import com.kindsonthegenius.fleetapp.services.VehicleService;
+import com.kindsonthegenius.fleetapp.services.VehicleStatusService;
+import com.kindsonthegenius.fleetapp.services.VehicleTypeService;
 
 @Controller
 public class VehicleController {
 	@Autowired
 	private VehicleService vehicleService;
+	@Autowired 
+	private VehicleTypeService vehicleTypeService;
+	@Autowired 
+	private VehicleMakeService vehicleMakeService;
+	@Autowired 
+	private VehicleModelService vehicleModelService;
+	@Autowired 
+	private LocationService locationService;
+	@Autowired 
+	private EmployeeService employeeService ;
+	@Autowired 
+	private VehicleStatusService vehicleStatusService;
 	
 	/**
 	 * 主頁
@@ -27,8 +45,13 @@ public class VehicleController {
 	 */
 	@GetMapping("/Vehicles")
 	public String getVehicles(Model model){
-		List<Vehicle> vehicleList = vehicleService.getVehicles();
-		model.addAttribute("vehicles",vehicleList);
+		model.addAttribute("vehicles",vehicleService.getVehicles());
+		model.addAttribute("vehicleTypes", vehicleTypeService.getVehicleTypes());
+		model.addAttribute("vehicleModels", vehicleModelService.getVehicleModels());
+		model.addAttribute("vehicleMakes", vehicleMakeService.getVehicleMakes());
+		model.addAttribute("locations", locationService.getLocations());
+		model.addAttribute("employees", employeeService.getEmployees());
+		model.addAttribute("vehicleStatuses", vehicleStatusService.getvehicleStatuses());
 		return "Vehicle";
 	}
 	
