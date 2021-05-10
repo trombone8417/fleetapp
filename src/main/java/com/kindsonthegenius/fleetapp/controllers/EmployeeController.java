@@ -13,12 +13,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kindsonthegenius.fleetapp.models.Employee;
+import com.kindsonthegenius.fleetapp.services.CountryService;
 import com.kindsonthegenius.fleetapp.services.EmployeeService;
+import com.kindsonthegenius.fleetapp.services.EmployeeTypeService;
+import com.kindsonthegenius.fleetapp.services.JobTitleService;
+import com.kindsonthegenius.fleetapp.services.StateService;
 
 @Controller
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
+	@Autowired 
+	private StateService stateService;
+	@Autowired 
+	private JobTitleService jobTitleService;
+	@Autowired 
+	private EmployeeTypeService employeeTypeService;
+	@Autowired 
+	private CountryService countryService;
 	
 	/**
 	 * 主頁
@@ -27,8 +39,12 @@ public class EmployeeController {
 	 */
 	@GetMapping("/Employees")
 	public String getEmployees(Model model){
-		List<Employee> employeeList = employeeService.getEmployees();
-		model.addAttribute("contacts",employeeList);
+		model.addAttribute("contacts",employeeService.getEmployees());
+		model.addAttribute("states", stateService.getStates());
+		model.addAttribute("employees", employeeService.getEmployees());
+		model.addAttribute("jobTitles", jobTitleService.getJobTitles());
+		model.addAttribute("employeeTypes", employeeTypeService.getEmployeeTypes());
+		model.addAttribute("countries", countryService.getCountries());
 		return "Employee";
 	}
 	
