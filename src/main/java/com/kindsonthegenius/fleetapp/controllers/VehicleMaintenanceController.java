@@ -13,12 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kindsonthegenius.fleetapp.models.VehicleMaintenance;
+import com.kindsonthegenius.fleetapp.services.SupplierService;
 import com.kindsonthegenius.fleetapp.services.VehicleMaintenanceService;
+import com.kindsonthegenius.fleetapp.services.VehicleService;
 
 @Controller
 public class VehicleMaintenanceController {
 	@Autowired
 	private VehicleMaintenanceService vehicleMaintenanceService;
+	@Autowired 
+	private VehicleService vehicleService;
+	@Autowired 
+	private SupplierService supplierService;
+	
 	
 	/**
 	 * 主頁
@@ -27,8 +34,9 @@ public class VehicleMaintenanceController {
 	 */
 	@GetMapping("/VehicleMaintenances")
 	public String getVehicleMaintenances(Model model){
-		List<VehicleMaintenance> vehicleMaintenanceList = vehicleMaintenanceService.getVehicleMaintenances();
-		model.addAttribute("vehicleMaintenances",vehicleMaintenanceList);
+		model.addAttribute("vehicleMaintenances",vehicleMaintenanceService.getVehicleMaintenances());
+		model.addAttribute("vehicles", vehicleService.getVehicles());
+		model.addAttribute("suppliers", supplierService.getSuppliers());
 		return "VehicleMaintenance";
 	}
 	
