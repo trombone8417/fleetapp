@@ -39,9 +39,13 @@ $('document').ready(function() {
 			
 			$('#startDateDetails').val(startDate);
 			$('#endDateDetails').val(endDate);
-			$('#lastModifiedByDetails').val(vehicleMaintenance.lastModifiedBy);
-			$('#lastModifiedDateDetails').val(vehicleMaintenance.lastModifiedDate.substr(0,19).replace("T", " "));
 		});			
+		
+		$('#ddlSupplierDetails').attr("disabled", true); 		
+		$('#ddlVehicleDetails').attr("disabled", true); 		
+		$('#startDateDetails').attr("disabled", true); 		
+		$('#endDateDetails').attr("disabled", true); 		
+		
 		$('#detailsModal').modal();		
 	});	
 	

@@ -39,12 +39,42 @@ $('document').ready(function() {
 		event.preventDefault();		
 		var href= $(this).attr('href');		
 		$.get(href, function(employee, status){
-			$('#idDetails').val(employee.id);
-			$('#descriptionDetails').val(employee.description);
-			$('#detailsDetails').val(employee.details);
-			$('#lastModifiedByDetails').val(employee.lastModifiedBy);
-			$('#lastModifiedDateDetails').val(employee.lastModifiedDate.substr(0,19).replace("T", " "));
+			$('#txtAddressDetails').val(employee.address);
+			$('#txtCityDetails').val(employee.city);
+			$('#ddlNationalityDetails').val(employee.countryid);			
+			var dob = employee.dateOfBirth.substr(0,10);
+			$('#txtDateOfBirthDetails').val(dob);
+			$('#txtEmailDetails').val(employee.email);
+			$('#txtFirstnameDetails').val(employee.firstname);
+			$('#ddlGenderDetails').val(employee.gender);
+			$('#txtIdDetails').val(employee.id);
+			$('#txtInitialsDetails').val(employee.initials);
+			$('#txtLastnameDetails').val(employee.lastname);
+			$('#ddlMaritalStatusDetails').val(employee.maritalStatus);
+			$('#txtMobileDetails').val(employee.mobile);
+			$('#txtOthernameDetails').val(employee.othername);		
+			$('#txtPhoneDetails').val(employee.phone);			
+			$('#fupPhotoDetails').val(employee.photo);			
+			$('#txtSSNDetails').val(employee.socialSecurityNumber);			
+			$('#ddlStateDetails').val(employee.stateid);	
+			$('#ddlTitleDetails').val(employee.title);			
+			$('#ddlEmployeeTypeDetails').val(employee.employeetypeid);				
+			var hireDate = employee.hireDate.substr(0,10);
+			$('#txtHireDateDetails').val(hireDate);
+			$('#ddlJobTitleDetails').val(employee.jobtitleid);		
 		});			
+		
+		
+		$('#ddlNationalityDetails').attr("disabled", true); 
+		$('#txtDateOfBirthDetails').attr("disabled", true);  
+		$('#txtHireDateDetails').attr("disabled", true);
+		$('#ddlGenderDetails').attr("disabled", true); 
+		$('#ddlMaritalStatusDetails').attr("disabled", true); 
+		$('#ddlStateDetails').attr("disabled", true); 
+		$('#ddlTitleDetails').attr("disabled", true); 
+		$('#ddlEmployeeTypeDetails').attr("disabled", true); 
+		$('#ddlJobTitleDetails').attr("disabled", true); 
+		
 		$('#detailsModal').modal();		
 	});	
 	
@@ -54,32 +84,6 @@ $('document').ready(function() {
 		$('#deleteModal #delRef').attr('href', href);
 		$('#deleteModal').modal();		
 	});	
-	
-	$('.table #photoButton').on('click',function(event) {
-		event.preventDefault();
-		var href = $(this).attr('href');
-		$('#photoModal #employeePhoto').attr('src', href);
-		$('#photoModal').modal();		
-	});	
-	
-	$('#uploadButton').on('click',function(event){
-		var href = $(this).attr('href');
 		
-		$.post(href, function(data, status){
-			console.log(data);
-		});
-	});	
 });
 
-
-
-
-//function fcnUpload(url){
-//	console.log("Upload button was clicked");
-//	//var href = $(this).attr('href');
-//	var href = url;
-//	console.log("End point of upload: " + href);
-//	$.post(href, function(data, status){
-//		console.log(data);
-//	});
-//}

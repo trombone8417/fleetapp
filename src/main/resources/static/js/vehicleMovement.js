@@ -36,9 +36,14 @@ $('document').ready(function() {
 			$('#date1Details').val(date1);
 			$('#date2Details').val(date2);
 			$('#remarksDetails').val(vehicleMovement.remarks);
-		//	$('#lastModifiedByDetails').val(vehicleMovement.lastModifiedBy);
-		//	$('#lastModifiedDateDetails').val(vehicleMovement.lastModifiedDate.substr(0,19).replace("T", " "));
-		});			
+		});		
+		
+				$('#ddlVehicleDetails').attr("disabled", true); 		
+				$('#ddlLocation1Details').attr("disabled", true);		
+				$('#ddlLocation2Details').attr("disabled", true); 		
+				$('#date1Details').attr("disabled", true); 		
+				$('#date2Details').attr("disabled", true);  
+			
 		$('#detailsModal').modal();		
 	});	
 	

@@ -35,16 +35,19 @@ $('document').ready(function() {
 			
 			var dateIn = vehicleHire.dateIn.substr(0,10);
 			var dateOut = vehicleHire.dateOut.substr(0,10);
-			$('#dateInDetails').val(vehicleHire.dateIn);
-			$('#dateOutDetails').val(vehicleHire.dateOut);
+			$('#dateInDetails').val(dateIn);
+			$('#dateOutDetails').val(dateOut);
 			$('#ddlLocationDetails').val(vehicleHire.locationid);
 			$('#priceDetails').val(vehicleHire.price);
 			$('#remarksDetails').val(vehicleHire.remarks);
 			$('#ddlVehicleDetails').val(vehicleHire.vehicleid);
-			$('#lastModifiedByDetails').val(vehicleHire.lastModifiedBy);
-			$('#lastModifiedDateDetails').val(vehicleHire.lastModifiedDate.substr(0,19).replace("T", " "));
 		});			
-		$('#detailsModal').modal();		
+		$('#ddlClientDetails').attr("disabled", true); 
+		$('#dateInDetails').attr("disabled", true); 
+		$('#dateOutDetails').attr("disabled", true); 
+		$('#ddlLocationDetails').attr("disabled", true); 
+		$('#ddlVehicleDetails').attr("disabled", true); 
+		$('#detailsModal').modal();	
 	});	
 	
 	$('.table #deleteButton').on('click',function(event) {

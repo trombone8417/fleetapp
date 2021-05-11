@@ -19,7 +19,6 @@ $('document').ready(function() {
 	});
 	
 	$('.table #detailsButton').on('click',function(event) {
-		debugger;
 		event.preventDefault();		
 		var href= $(this).attr('href');		
 		$.get(href, function(inv, status){
@@ -36,7 +35,6 @@ $('document').ready(function() {
 		});
 		$('#invoiceDateDetails').attr("disabled", true); 	
 		$('#ddlInvoiceStatusDetails').attr("disabled", true); 	
-			
 		$('#ddlClientDetails').attr("disabled", true); 			
 		$('#detailsModal').modal();		
 	});	

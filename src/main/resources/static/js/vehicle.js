@@ -32,13 +32,35 @@ $('document').ready(function() {
 	$('.table #detailsButton').on('click',function(event) {
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(vehicleType, status){
-			$('#idDetails').val(vehicleType.id);
-			$('#descriptionDetails').val(vehicleType.description);
-			$('#detailsDetails').val(vehicleType.details);
-			$('#lastModifiedByDetails').val(vehicleType.lastModifiedBy);
-			$('#lastModifiedDateDetails').val(vehicleType.lastModifiedDate.substr(0,19).replace("T", " "));
+		$.get(href, function(vehicle, status){
+			var acDate = vehicle.acquisitionDate.substr(0,10);
+			$('#txtAcquisitionDateDetails').val(acDate);
+			$('#txtDescriptionDetails').val(vehicle.description);
+			$('#ddlEmployeeDetails').val(vehicle.employeeid);
+			$('#txtFuelCapacityDetails').val(vehicle.fuelCapacity);
+			$('#txtIdDetails').val(vehicle.id);
+			$('#ddlLocationDetails').val(vehicle.locationid);
+			$('#txtNameDetails').val(vehicle.name);
+			$('#txtNetWeightDetails').val(vehicle.netWeight);
+			$('#txtPowerDetails').val(vehicle.power);
+			var regDate = vehicle.registrationDate.substr(0,10);
+			$('#txtRegistrationDateDetails').val(regDate);
+			$('#txtRemarksDetails').val(vehicle.remarks);
+			$('#ddlVehicleMakeDetails').val(vehicle.vehiclemakeid);		
+			$('#ddlVehicleModelDetails').val(vehicle.vehiclemodelid);			
+			$('#txtVehicleNumberDetails').val(vehicle.vehicleNumber);			
+			$('#ddlVehicleStatusDetails').val(vehicle.vehiclestatusid);			
+			$('#ddlVehicleTypeDetails').val(vehicle.vehicletypeid);	
 		});			
+		$('#txtAcquisitionDateDetails').attr("disabled", true); 
+		$('#ddlEmployeeDetails').attr("disabled", true); 
+		$('#txtRegistrationDateDetails').attr("disabled", true); 
+		$('#ddlVehicleMakeDetails').attr("disabled", true); 
+		$('#ddlVehicleModelDetails').attr("disabled", true); 	
+		$('#ddlVehicleStatusDetails').attr("disabled", true); 	
+		$('#ddlVehicleTypeDetails').attr("disabled", true); 
+		$('#ddlLocationDetails').attr("disabled", true); 		
+		
 		$('#detailsModal').modal();		
 	});	
 	
